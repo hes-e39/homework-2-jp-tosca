@@ -57,14 +57,10 @@ export const isUser = (u: AllPeople):boolean => {
  * @returns A greeting message
  */
 export const userGreetingMessage = (u: AllPeople) => {
-  let greeting;
-  if(isAdmin(u)){
-    greeting = '. You are an admin.';
-  } else if (isUser(u)){
-    greeting = '. You are a user.';
-  } else {
-    greeting = '. You do not have access.';
-  }
-
-  return "Hello, " + u.name + greeting;
+  return "Hello, " + u.name + 
+  (
+    isAdmin(u) ? '. You are an admin.' 
+    : isUser(u) ? '. You are a user.' 
+    : '. You do not have access.'
+  );
 };
